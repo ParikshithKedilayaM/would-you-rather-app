@@ -15,6 +15,15 @@ class Login extends Component {
                     <div>
                         <label>
                             <h3>Sign In</h3>
+                            <form>
+                                <div class="form-group">
+                                    <input type="text" 
+                                        placeholder="Enter User Name"
+                                        class="form-control"
+                                    />
+                                </div>
+                                <button className="btn btn-primary btn-block" >Sign In</button>
+                            </form>
                         </label>
                     </div>
                 </div>
