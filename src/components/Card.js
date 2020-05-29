@@ -5,18 +5,20 @@ import Result from './Result'
 class Card extends Component {
     render() {
         return (
-            <div class="card row align-items-center justify-content-center">
-                <div class="well well-sm">
+            <div class="panel panel-default col-md-6 col-md-offset-3">
+                <div class="panel-heading">
                     <b>
                         Tyler asks
                     </b>
                 </div>
-                <div class="col-md-2 col-md-offset-3" >
-                    <img class="img-circle" src="../../logo192.png" alt="User avatar" />
-                </div>
-                <div class="col-md-4" >
-                    <Question />
-                    <Result />
+                <div className="panel-body">
+                    <div class="col-md-3" >
+                        <img class="img-circle" width="100%" src="../../img_avatar.png" alt="User avatar" />
+                    </div>
+                    <div class="col-md-9 left" >
+                        <Question />
+                        <Result />
+                    </div>
                 </div>
             </div>
         )

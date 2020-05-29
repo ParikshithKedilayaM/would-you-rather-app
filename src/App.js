@@ -2,6 +2,7 @@ import React from 'react';
 import Login from './components/Login';
 import Header from './components/Header';
 import Card from './components/Card';
+import NewQuestion from './components/NewQuestion';
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <Card />
       <Login />
+      <NewQuestion />
     </div>
   );
 }

@@ -19,7 +19,7 @@ class Question extends Component {
                         </label>
                     </div>
                 </p>
-                <button style={{width: 18+'rem'}} class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary btn-block">Submit</button>
             </div>
         )
     }
