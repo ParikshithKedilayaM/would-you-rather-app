@@ -1,6 +1,35 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authUser'
 
 class Login extends Component {
+    state = {
+        uname : '',
+        loginFailed : false
+    }
+    signIn = (event) => {
+        event.preventDefault();
+        const uid = this.props.users[this.state.uname]
+        if (uid && uid !== null) {
+            this.setState({
+                loginFailed : false,
+            })
+            this.props.dispatch(setAuthedUser(uid))
+        } else {
+            this.setState({
+                loginFailed : true,
+            })
+        }
+        this.setState({
+            uname : ''
+        })
+    }
+
+    setUsername = (event) => {
+        this.setState({
+            uname :event.target.value,
+        })
+    }
     render() {
         return (
             <div className="panel panel-default col-md-6 col-md-offset-3">
@@ -16,14 +45,26 @@ class Login extends Component {
                         <label>
                             <h3>Sign In</h3>
                         </label>
+                        {this.state.loginFailed && (
+                            <div className="alert alert-danger flex">
+                                <label>Login failed</label>
+                            </div>
+                        )}
                         <form>
                             <div className="form-group">
                                 <input type="text" 
                                     placeholder="Enter User Name"
                                     className="form-control"
+                                    value={this.state.uname}
+                                    onChange={this.setUsername}
                                 />
                             </div>
-                            <button className="btn btn-primary btn-block" >Sign In</button>
+                            <button 
+                                className="btn btn-primary btn-block" 
+                                onClick={this.signIn}
+                                >
+                                Sign In
+                            </button>
                         </form>
                         
                     </div>
@@ -33,4 +74,10 @@ class Login extends Component {
     }
 }
 
-export default Login
+function mapStateToProps({users}) {
+    return {
+        users,
+    }
+}
+
+export default connect(mapStateToProps)(Login)

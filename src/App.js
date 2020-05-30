@@ -13,28 +13,40 @@ class App extends Component {
     this.props.dispatch(handleInitialData())
   }
   render() {
+    console.log(this.props.loading)
     return (
-      <div className="container">
-        <Router>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/poll">
-            <Poll />
-          </Route>
-          <Route exact path="/login">
+      
+      <Router>
+        <div className="container">
+        {this.props.loading === true 
+        ? <div>
             <Login />
-          </Route>
-          <Route exact path="/newquestion">
-            <NewQuestion />
-          </Route>   
-          <Route exact path="/leaderboard">
-            <LeaderBoard />
-          </Route>
-        </Router>
-      </div>
+          </div>
+        : <div>
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/poll">
+                <Poll />
+              </Route>
+              <Route exact path="/newquestion">
+                <NewQuestion />
+              </Route>   
+              <Route exact path="/leaderboard">
+                <LeaderBoard />
+              </Route>
+            </div>
+          }
+          </div>
+      </Router>
     );
   }
 }
 
-export default connect()(App);
+function mapStateToProps({authUser}) {
+  return {
+    loading: authUser === null
+  }
+}
+
+export default connect(mapStateToProps)(App);
