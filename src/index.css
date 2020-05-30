@@ -28,3 +28,7 @@ code {
 a.disabled {
   pointer-events: none;
 }
+
+.img-resize {
+  max-height: 20px;
+}

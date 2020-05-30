@@ -15,7 +15,7 @@ class Header extends Component {
                         <li><a href="/leaderboard"> Leaderboard </a></li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
-                        <li><a href="#" className="disabled"> {<UserBadge />} </a></li>
+                        <li><a href="/" className="disabled"> {<UserBadge />} </a></li>
                         <li><a href="/logout"><span className="glyphicon glyphicon-log-in"></span> Logout </a></li>
                     </ul>
                 </div>

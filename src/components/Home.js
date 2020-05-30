@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Header from './Header'
+import Card from './Card'
+import Result from './Result'
 
 class Home extends Component {
     render() {
@@ -15,7 +17,7 @@ class Home extends Component {
                     </div>
                     <div className="panel-body tab-content">
                         <div id="unanswered" className="tab-pane fade in active">
-                            Unanswered
+                            <Card />
                         </div>
                         <div id="answered" className="tab-pane fade">
                             Answered

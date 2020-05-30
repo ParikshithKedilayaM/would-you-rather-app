@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import Login from './components/Login';
-import Card from './components/Card';
 import NewQuestion from './components/NewQuestion';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LeaderBoard from './components/LeaderBoard';
 import Home from './components/Home';
+import Poll from './components/Poll';
 
 class App extends Component {
   componentDidMount() {
@@ -18,7 +18,7 @@ class App extends Component {
             <Home />
           </Route>
           <Route exact path="/poll">
-            <Card />
+            <Poll />
           </Route>
           <Route exact path="/login">
             <Login />

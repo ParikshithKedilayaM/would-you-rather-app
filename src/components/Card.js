@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import Question from './Question'
 import Result from './Result'
-import Header from './Header'
 
 class Card extends Component {
     render() {
         return (
             <div>
-                <Header />
-                <div className="panel panel-default col-md-6 col-md-offset-3">
+                
                     <div className="panel-heading">
                         <b>
                             Tyler asks
@@ -23,7 +21,7 @@ class Card extends Component {
                             <Result />
                         </div>
                     </div>
-                </div>
+                
             </div>
         )
     }
