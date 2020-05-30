@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import Header from './Header'
 import Card from './Card'
-import Result from './Result'
 
 class Home extends Component {
     render() {

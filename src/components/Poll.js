@@ -7,7 +7,7 @@ class Poll extends Component {
         return (
             <div>
                 <Header />
-                <div className="panel panel-default col-md-6 col-md-offset-3">
+                <div className="col-md-6 col-md-offset-3">
                     <Card />
                 </div>
             </div>
