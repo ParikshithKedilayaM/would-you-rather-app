@@ -21,14 +21,16 @@ code {
   border-right: 1px solid #ddd;
 }
 
-.left {
-  border-left: 1px solid #ddd;
-}
-
 a.disabled {
   pointer-events: none;
 }
 
 .img-resize {
   max-height: 20px;
+}
+
+@media screen and (min-width: 991px) {
+  .left {
+    border-left: 1px solid #ddd;
+  }
 }

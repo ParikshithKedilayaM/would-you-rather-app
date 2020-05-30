@@ -5,10 +5,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import LeaderBoard from './components/LeaderBoard';
 import Home from './components/Home';
 import Poll from './components/Poll';
+import {handleInitialData} from './actions/shared'
+import { connect } from 'react-redux'
 
 class App extends Component {
   componentDidMount() {
-    //this.props.dispatch(handleInitialData())
+    this.props.dispatch(handleInitialData())
   }
   render() {
     return (
@@ -35,4 +37,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default connect()(App);
