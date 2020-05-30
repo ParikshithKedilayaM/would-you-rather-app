@@ -24,3 +24,7 @@ code {
 .left {
   border-left: 1px solid #ddd;
 }
+
+a.disabled {
+  pointer-events: none;
+}

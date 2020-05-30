@@ -3,23 +3,21 @@ import React, { Component } from 'react'
 class Question extends Component {
     render() {
         return (
-            <div class="card-body">
-                <h2 class="card-title">Would You Rather...</h2>
-                <p className="class-body">
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="option" value="Option 1" />
-                            Option 1
-                        </label>
-                    </div>
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="option" value="Option 2" />
-                            Option 2
-                        </label>
-                    </div>
-                </p>
-                <button class="btn btn-primary btn-block">Submit</button>
+            <div className="card-body">
+                <h2 className="card-title">Would You Rather...</h2>
+                <div className="radio">
+                    <label>
+                        <input type="radio" name="option" value="OptionOne" />
+                        Option 1
+                    </label>
+                </div>
+                <div className="radio">
+                    <label>
+                        <input type="radio" name="option" value="OptionTwo" />
+                        Option 2
+                    </label>
+                </div>
+                <button className="btn btn-primary btn-block">Submit</button>
             </div>
         )
     }

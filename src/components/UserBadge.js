@@ -4,7 +4,7 @@ class UserBadge extends Component {
     render() {
         return (
             <div>
-                <span class="glyphicon glyphicon-user"></span>
+                <span className="glyphicon glyphicon-user"></span>
                 {
                 //}<img src="" class="img-circle" alt="User avatar" />
                 }

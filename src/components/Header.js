@@ -4,19 +4,19 @@ import UserBadge from './UserBadge'
 class Header extends Component {
     render() {
         return (
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <span class="navbar-brand" >Would You Rather</span>
+            <nav className="navbar navbar-default">
+                <div className="container-fluid">
+                    <div className="navbar-header">
+                        <span className="navbar-brand" >Would You Rather</span>
                     </div>
-                    <ul class="nav navbar-nav">
+                    <ul className="nav navbar-nav">
                         <li><a href="/">Home</a></li>
                         <li><a href="/newquestion"> New Question </a></li>
                         <li><a href="/leaderboard"> Leaderboard </a></li>
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="/Login"> {<UserBadge />} </a></li>
-                        <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout </a></li>
+                    <ul className="nav navbar-nav navbar-right">
+                        <li><a href="#" className="disabled"> {<UserBadge />} </a></li>
+                        <li><a href="/logout"><span className="glyphicon glyphicon-log-in"></span> Logout </a></li>
                     </ul>
                 </div>
             </nav>
