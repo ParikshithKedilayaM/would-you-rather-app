@@ -3,9 +3,13 @@ import Question from './Question'
 import Result from './Result'
 import QuestionThumbnail from './QuestionThumbnail'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class Card extends Component {
     render() {
+        if ( this.props.question === undefined) {
+            return <Redirect to = "/404" />
+        }
         const questionUser = this.props.users[this.props.question.author]
         return (
             <div className="panel panel-default">

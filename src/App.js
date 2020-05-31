@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Poll from './components/Poll';
 import {handleInitialData} from './actions/shared'
 import { connect } from 'react-redux'
+import ErrorPage from './components/ErrorPage';
 
 class App extends Component {
   componentDidMount() {
@@ -22,17 +23,12 @@ class App extends Component {
             <Login />
           </div>
         : <div>
-              <Route exact path="/">
-                <Home />
-              </Route>
+              <Route exact path="/" component={Home} />
               <Route exact path="/poll/:id/" component={Poll} />
-              <Route exact path="/newquestion">
-                <NewQuestion />
-              </Route>   
-              <Route exact path="/leaderboard">
-                <LeaderBoard />
-              </Route>
-            </div>
+              <Route exact path="/newquestion" component={NewQuestion} />
+              <Route exact path="/leaderboard" component={LeaderBoard} />
+              <Route exact path="/404" component={ErrorPage} />
+          </div>
           }
           </div>
       </Router>
