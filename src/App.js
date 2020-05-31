@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Login from './components/Login';
 import NewQuestion from './components/NewQuestion';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
@@ -8,6 +8,7 @@ import Poll from './components/Poll';
 import {handleInitialData} from './actions/shared'
 import { connect } from 'react-redux'
 import ErrorPage from './components/ErrorPage';
+import { LoadingBar } from 'react-redux-loading'
 
 class App extends Component {
   componentDidMount() {
@@ -17,20 +18,23 @@ class App extends Component {
     return (
       
       <Router>
-        <div className="container">
-        {this.props.loading === true 
-        ? <div>
-            <Login />
-          </div>
-        : <div>
-              <Route exact path="/" component={Home} />
-              <Route exact path="/questions/:id/" component={Poll} />
-              <Route exact path="/add" component={NewQuestion} />
-              <Route exact path="/leaderboard" component={LeaderBoard} />
-              <Route exact path="/404" component={ErrorPage} />
-          </div>
-          }
-          </div>
+        <Fragment>
+          <LoadingBar />
+          <div className="container">
+          {this.props.loading === true 
+          ? <div>
+              <Login />
+            </div>
+          : <div>
+                <Route exact path="/" component={Home} />
+                <Route exact path="/questions/:id/" component={Poll} />
+                <Route exact path="/add" component={NewQuestion} />
+                <Route exact path="/leaderboard" component={LeaderBoard} />
+                <Route exact path="/404" component={ErrorPage} />
+            </div>
+            }
+            </div>
+          </Fragment>
       </Router>
     );
   }

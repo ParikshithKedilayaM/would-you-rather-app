@@ -1,4 +1,5 @@
 import { addPoll, recordResponse } from '../utils/api'
+import { showLoading, hideLoading } from 'react-redux-loading'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
@@ -28,23 +29,27 @@ function answerQuestion(info) {
 export function handleAddPoll(optionOne, optionTwo) {
     return(dispatch, getState) => {
         const {authUser} = getState()
+        dispatch(showLoading())
         return addPoll({
             optionOne, 
             optionTwo,
             authUser,
         })
         .then((question) => dispatch(addQuestion(question)))
+        .then(dispatch(hideLoading()))
     }
 }
 
 export function handleAnswerQuestion(id, selectedOption) {
     return (dispatch, getState) => {
         const {authUser} = getState()
+        dispatch(showLoading())
         return recordResponse({
             authedUser : authUser.id,
             qid : id, 
             answer : selectedOption,
         })
         .then((info) => dispatch(answerQuestion(info)))
+        .then(dispatch(hideLoading()))
     }
 }
