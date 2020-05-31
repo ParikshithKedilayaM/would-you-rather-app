@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 
 class UserBadge extends Component {
     render() {
-        console.log(this.props)
         return (
             <span>
                 <img src={this.props.authUser.avatarURL} 

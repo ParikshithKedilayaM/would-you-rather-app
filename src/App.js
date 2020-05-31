@@ -41,7 +41,6 @@ class App extends Component {
 }
 
 function mapStateToProps({authUser}) {
-  console.log(authUser)
   return {
     loading: authUser === null
   }

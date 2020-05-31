@@ -6,17 +6,18 @@ import { connect } from 'react-redux'
 
 class Card extends Component {
     render() {
+        const questionUser = this.props.users[this.props.question.author]
         return (
             <div className="panel panel-default">
                 
                 <div className="panel-heading">
                     <label>
-                    {this.props.users[this.props.question.author].name} asks
+                    {questionUser.name} asks
                     </label>
                 </div>
                 <div className="panel-body">
                     <div className="col-md-3" >
-                        <img className="img-circle" width="100%" src={this.props.users[this.props.question.author].avatarURL} alt="User avatar" />
+                        <img className="img-circle" width="100%" src={questionUser.avatarURL} alt="User avatar" />
                     </div>
                     <div className="col-md-9 left" >
                         {this.props.thumbnail && (<QuestionThumbnail id={this.props.id} />)}
