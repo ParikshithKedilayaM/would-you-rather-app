@@ -1,12 +1,34 @@
 import React, { Component } from 'react'
 import Header from './Header'
+import { handleAddPoll } from '../actions/questions'
+import { connect } from 'react-redux'
 
 class NewQuestion extends Component {
+    state = {
+        optionOne : '',
+        optionTwo : '',
+        success : false,
+    }
+    postNewQuestion = (event) => {
+        event.preventDefault();
+        const {dispatch} = this.props
+        dispatch(handleAddPoll(this.state.optionOne, this.state.optionTwo))
+        this.setState({
+            optionOne:'',
+            optionTwo:'',
+            success: true,
+        })
+    }
     render() {
         return (
             <div>
                 <Header />
                 <div className="panel panel-default col-md-6 col-md-offset-3">
+                    {this.state.success && (
+                        <div className="alert alert-success flex">
+                            <label>Question posted successfully</label>
+                        </div>
+                    )}
                     <div className="panel-heading text-center"><h2>Create New Question</h2></div>
                     <div className="panel-body">
                         <div>
@@ -32,7 +54,12 @@ class NewQuestion extends Component {
                                     className="form-control"
                                 />
                             </div>
-                            <button className="btn btn-primary btn-block">Submit</button>
+                            <button 
+                                className="btn btn-primary btn-block"
+                                onClick={this.postNewQuestion}
+                                >
+                                Submit
+                            </button>
                             </form>
                         </div>
                     </div>
@@ -42,4 +69,4 @@ class NewQuestion extends Component {
     }
 }
 
-export default NewQuestion
+export default connect()(NewQuestion)
