@@ -4,13 +4,14 @@ import { connect } from 'react-redux'
 
 class LeaderBoard extends Component {
     render() {
+        let index = 1;
         return (
             <div>
                 <Header />
                 {this.props.users.map(user => (
                 <div key={user.id} className="panel panel-default col-md-6 col-md-offset-3">
                     <div className="panel-body">
-                    <i className="fa" style={{fontSize:20+'px',color:'#DAA520'}}>&#xf091;</i>
+                        <i className="fa" style={{fontSize:20+'px',color:'#DAA520'}}>&#xf091;</i><label>#{index++}</label>
                             <div>
                                 <div className="col-md-3" >
                                     <img className="img-circle" width="100%" src={user.avatarURL} alt="User avatar" />
@@ -60,8 +61,13 @@ class LeaderBoard extends Component {
 
 
 function mapStateToProps({users}) {
+    const sortedUsers = Object.keys(users).sort((a,b) => (
+        (Object.keys(users[b].answers).length + users[b].questions.length)
+        -
+        (Object.keys(users[a].answers).length + users[a].questions.length)
+    )).map(key => users[key])
     return {
-        users: Object.values(users)
+        users: sortedUsers,
     }
 }
 export default connect(mapStateToProps)(LeaderBoard)
