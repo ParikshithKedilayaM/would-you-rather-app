@@ -9,12 +9,12 @@ class Login extends Component {
     }
     signIn = (event) => {
         event.preventDefault();
-        const uid = this.props.users[this.state.uname]
-        if (uid && uid !== null) {
+        const user = this.props.users[this.state.uname]
+        if (user && user !== null) {
             this.setState({
                 loginFailed : false,
             })
-            this.props.dispatch(setAuthedUser(uid))
+            this.props.dispatch(setAuthedUser(user))
         } else {
             this.setState({
                 loginFailed : true,

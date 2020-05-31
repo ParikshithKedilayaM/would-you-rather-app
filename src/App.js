@@ -13,7 +13,6 @@ class App extends Component {
     this.props.dispatch(handleInitialData())
   }
   render() {
-    console.log(this.props.loading)
     return (
       
       <Router>
@@ -44,6 +43,7 @@ class App extends Component {
 }
 
 function mapStateToProps({authUser}) {
+  console.log(authUser)
   return {
     loading: authUser === null
   }

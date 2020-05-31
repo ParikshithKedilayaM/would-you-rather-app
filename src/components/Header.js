@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import UserBadge from './UserBadge'
+import { NavLink } from 'react-router-dom'
 
 class Header extends Component {
     render() {
@@ -10,9 +11,21 @@ class Header extends Component {
                         <span className="navbar-brand" >Would You Rather</span>
                     </div>
                     <ul className="nav navbar-nav">
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/newquestion"> New Question </a></li>
-                        <li><a href="/leaderboard"> Leaderboard </a></li>
+                        <li>
+                            <NavLink to='/' exact activeClassName='active'>
+                                Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/newquestion' exact activeClassName='active'>
+                                New Question 
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink to='/leaderboard' exact activeClassName='active'>
+                                Leaderboard 
+                            </NavLink>
+                        </li>
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
                         <li><a href="/" className="disabled"> {<UserBadge />} </a></li>
