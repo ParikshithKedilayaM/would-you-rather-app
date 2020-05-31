@@ -17,7 +17,7 @@ class Header extends Component {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to='/newquestion' exact activeClassName='active'>
+                            <NavLink to='/add' exact activeClassName='active'>
                                 New Question 
                             </NavLink>
                         </li>

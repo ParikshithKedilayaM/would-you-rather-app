@@ -8,17 +8,39 @@ class NewQuestion extends Component {
         optionOne : '',
         optionTwo : '',
         success : false,
+        errorField : false,
     }
+
     postNewQuestion = (event) => {
         event.preventDefault();
-        const {dispatch} = this.props
-        dispatch(handleAddPoll(this.state.optionOne, this.state.optionTwo))
+        if (this.state.optionOne.trim() === '' || this.state.optionTwo.trim() === '') {
+            this.setState({
+                errorField : true,
+            })
+        } else {
+            const {dispatch} = this.props
+            dispatch(handleAddPoll(this.state.optionOne, this.state.optionTwo))
+            this.setState({
+                optionOne:'',
+                optionTwo:'',
+                success: true,
+                errorField: false,
+            })
+        }
+    }
+
+    setOptionOne = (event) => {
         this.setState({
-            optionOne:'',
-            optionTwo:'',
-            success: true,
+            optionOne : event.target.value,
         })
     }
+
+    setOptionTwo = (event) => {
+        this.setState({
+            optionTwo : event.target.value,
+        })
+    }
+
     render() {
         return (
             <div>
@@ -27,6 +49,11 @@ class NewQuestion extends Component {
                     {this.state.success && (
                         <div className="alert alert-success flex">
                             <label>Question posted successfully</label>
+                        </div>
+                    )}
+                    {this.state.errorField && (
+                        <div className="alert alert-danger flex">
+                            <label>Please fill both the options to submit a poll!</label>
                         </div>
                     )}
                     <div className="panel-heading text-center"><h2>Create New Question</h2></div>
@@ -43,6 +70,8 @@ class NewQuestion extends Component {
                                 <input type="text" 
                                     placeholder="Enter Option One Text Here"
                                     className="form-control"
+                                    value={this.state.optionOne}
+                                    onChange={this.setOptionOne}
                                 />
                             </div>
                             <div className="text-center">
@@ -52,6 +81,8 @@ class NewQuestion extends Component {
                                 <input type="text" 
                                     placeholder="Enter Option Two Text Here"
                                     className="form-control"
+                                    value={this.state.optionTwo}
+                                    onChange={this.setOptionTwo}
                                 />
                             </div>
                             <button 
