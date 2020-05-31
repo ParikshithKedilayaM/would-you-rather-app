@@ -21,17 +21,19 @@ class App extends Component {
         <Fragment>
           <LoadingBar />
           <div className="container">
-          {this.props.loading === true 
-          ? <div>
-              <Login />
-            </div>
-          : <div>
-                <Route exact path="/" component={Home} />
-                <Route exact path="/questions/:id/" component={Poll} />
-                <Route exact path="/add" component={NewQuestion} />
-                <Route exact path="/leaderboard" component={LeaderBoard} />
-                <Route exact path="/404" component={ErrorPage} />
-            </div>
+            {this.props.loading === 0 
+            ? null
+            : this.props.loggedOut === true 
+              ? <div>
+                  <Login />
+                </div>
+              : <div>
+                    <Route exact path="/" component={Home} />
+                    <Route exact path="/questions/:id/" component={Poll} />
+                    <Route exact path="/add" component={NewQuestion} />
+                    <Route exact path="/leaderboard" component={LeaderBoard} />
+                    <Route exact path="/404" component={ErrorPage} />
+                </div>
             }
             </div>
           </Fragment>
@@ -40,9 +42,10 @@ class App extends Component {
   }
 }
 
-function mapStateToProps({authUser}) {
+function mapStateToProps({authUser, users}) {
   return {
-    loading: authUser === null
+    loggedOut: authUser === null,
+    loading: Object.keys(users).length,
   }
 }
 
