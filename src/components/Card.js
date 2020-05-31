@@ -22,7 +22,7 @@ class Card extends Component {
                     <div className="col-md-9 left" >
                         {this.props.thumbnail && (<QuestionThumbnail id={this.props.id} />)}
                         {this.props.q && (<Question id={this.props.id} />)}
-                        {this.props.result && (<Result />)}
+                        {this.props.result && (<Result id={this.props.id} />)}
                     </div>
                 </div>
                 
