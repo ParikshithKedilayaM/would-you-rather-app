@@ -9,7 +9,7 @@ class QuestionThumbnail extends Component {
             <div className="card-body">
                 <h2 className="card-title">Would You Rather</h2>
                 <label>{this.props.text} or </label>
-                <Link to={`/poll/${this.props.id}`} >
+                <Link to={`/questions/${this.props.id}`} >
                     <button className="btn btn-default btn-block">View Poll</button>
                 </Link>
 
