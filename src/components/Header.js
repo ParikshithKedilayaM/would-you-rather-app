@@ -29,7 +29,7 @@ class Header extends Component {
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
                         <li><a href="/" className="disabled"> {<UserBadge />} </a></li>
-                        <li><a href="/logout"><span className="glyphicon glyphicon-log-in"></span> Logout </a></li>
+                        <li><a href="/"><span className="glyphicon glyphicon-log-in"></span> Logout </a></li>
                     </ul>
                 </div>
             </nav>

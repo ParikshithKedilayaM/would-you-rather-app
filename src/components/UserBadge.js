@@ -6,9 +6,9 @@ class UserBadge extends Component {
         console.log(this.props)
         return (
             <span>
-                <img src="../../img_avatar.png" 
-                    className="img-circle img-resize"  
-                    alt="User avatar" 
+                <img src={this.props.authUser.avatarURL} 
+                    className="img-circle img-resize avatar"  
+                    alt="Avatar" 
                     />
                 <span> Hello {this.props.authUser.name} </span>
             </span>

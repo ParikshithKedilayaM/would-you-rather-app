@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header from './Header'
 import Card from './Card'
+import { connect } from 'react-redux'
 
 class Home extends Component {
     render() {
@@ -16,10 +17,24 @@ class Home extends Component {
                     </div>
                     <div className="panel-body tab-content">
                         <div id="unanswered" className="tab-pane fade in active">
-                            <Card />
+                            {
+                                this.props.questions.map(question => (
+                                    !this.props.answers.includes(question.id) && 
+                                    <Card key={question.id} id={question.id}
+                                            thumbnail={true}
+                                            />
+                                ))
+                            }
                         </div>
                         <div id="answered" className="tab-pane fade">
-                            Answered
+                        {
+                                this.props.questions.map(question => (
+                                    this.props.answers.includes(question.id) && 
+                                    <Card key={question.id} id={question.id}
+                                            thumbnail={true}
+                                            />
+                                ))
+                            }
                         </div>
                     </div>
                 </div>
@@ -28,4 +43,13 @@ class Home extends Component {
     }
 }
 
-export default Home
+function mapStateToProps({questions, authUser, users}) {
+    return {
+        authUser,
+        users,
+        questions : Object.values(questions),
+        answers : Object.keys(authUser.answers)
+    }
+}
+
+export default connect(mapStateToProps)(Home)

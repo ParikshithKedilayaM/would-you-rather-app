@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
 
 class Question extends Component {
     render() {
@@ -8,13 +9,13 @@ class Question extends Component {
                 <div className="radio">
                     <label>
                         <input type="radio" name="option" value="OptionOne" />
-                        Option 1
+                            {this.props.question.optionOne.text}
                     </label>
                 </div>
                 <div className="radio">
                     <label>
                         <input type="radio" name="option" value="OptionTwo" />
-                        Option 2
+                        {this.props.question.optionTwo.text}
                     </label>
                 </div>
                 <button className="btn btn-primary btn-block">Submit</button>
@@ -23,4 +24,11 @@ class Question extends Component {
     }
 }
 
-export default Question
+function mapStateToProps({users, questions}, props) {
+    const { id } = props
+    return {
+        question : questions[id],
+    }
+}
+
+export default connect(mapStateToProps)(Question)
