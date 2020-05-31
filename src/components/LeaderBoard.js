@@ -10,7 +10,7 @@ class LeaderBoard extends Component {
                 {this.props.users.map(user => (
                 <div key={user.id} className="panel panel-default col-md-6 col-md-offset-3">
                     <div className="panel-body">
-                        
+                    <i className="fa" style={{fontSize:20+'px',color:'#DAA520'}}>&#xf091;</i>
                             <div>
                                 <div className="col-md-3" >
                                     <img className="img-circle" width="100%" src={user.avatarURL} alt="User avatar" />
@@ -62,7 +62,6 @@ class LeaderBoard extends Component {
 function mapStateToProps({users}) {
     return {
         users: Object.values(users)
-        
     }
 }
 export default connect(mapStateToProps)(LeaderBoard)
