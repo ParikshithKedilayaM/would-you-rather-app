@@ -8,7 +8,7 @@ import Poll from './components/Poll';
 import {handleInitialData} from './actions/shared'
 import { connect } from 'react-redux'
 import ErrorPage from './components/ErrorPage';
-import { LoadingBar } from 'react-redux-loading'
+import LoadingBar from 'react-redux-loading'
 
 class App extends Component {
   componentDidMount() {
@@ -19,7 +19,7 @@ class App extends Component {
       
       <Router>
         <Fragment>
-          <LoadingBar />
+          <LoadingBar style={{ backgroundColor: '#337ab7', height: '3px', position:'absolute', zIndex:999}} />
           <div className="container">
             {this.props.loading === 0 
             ? null

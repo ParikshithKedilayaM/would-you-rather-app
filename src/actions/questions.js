@@ -30,13 +30,14 @@ export function handleAddPoll(optionOne, optionTwo) {
     return(dispatch, getState) => {
         const {authUser} = getState()
         dispatch(showLoading())
+        console.log(optionTwo)
         return addPoll({
-            optionOne, 
-            optionTwo,
-            authUser,
+            optionOneText: optionOne, 
+            optionTwoText: optionTwo,
+            author: authUser.id,
         })
         .then((question) => dispatch(addQuestion(question)))
-        .then(dispatch(hideLoading()))
+        .then(() => dispatch(hideLoading()))
     }
 }
 
@@ -50,6 +51,6 @@ export function handleAnswerQuestion(id, selectedOption) {
             answer : selectedOption,
         })
         .then((info) => dispatch(answerQuestion(info)))
-        .then(dispatch(hideLoading()))
+        .then(() => dispatch(hideLoading()))
     }
 }

@@ -11,8 +11,19 @@ export default function questions (state = {}, action) {
                 ...state, ...action.questions
             }
         case ADD_QUESTION :
+            console.log(action.question)
+            let userUpdate = {}
+            userUpdate = {
+                [action.question.author] : {
+                    ...state[action.question.author],
+                    //questions : state[action.question.author].questions.concat([action.question.id])
+                }
+            }
+            console.log(userUpdate)
             return {
                 ...state, 
+                [action.question.id] : action.question,
+                ///...userUpdate,
             }
         case ANSWER_QUESTION:
             return {
