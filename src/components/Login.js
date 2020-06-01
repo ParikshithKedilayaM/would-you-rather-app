@@ -52,12 +52,25 @@ class Login extends Component {
                         )}
                         <form>
                             <div className="form-group">
-                                <input type="text" 
+                                {/* <input type="text" 
                                     placeholder="Enter User Name"
                                     className="form-control"
                                     value={this.state.uname}
                                     onChange={this.setUsername}
-                                />
+                                /> */}
+                                <select 
+                                    className="form-control"
+                                    value={this.state.uname}
+                                    onChange={this.setUsername}
+                                >   
+                                    <option value="" defaultValue></option>
+                                    {Object.keys(this.props.users).map( user => (
+                                        <option key={this.props.users[user].id}
+                                            value={this.props.users[user].id}>
+                                                {this.props.users[user].name}
+                                        </option>
+                                    ))}
+                                </select>
                             </div>
                             <button 
                                 className="btn btn-primary btn-block" 

@@ -11,7 +11,7 @@ export default function questions (state = {}, action) {
                 ...state, ...action.questions
             }
         case ADD_QUESTION :
-            console.log(action.question)
+            console.log(action.question.author)
             let userUpdate = {}
             userUpdate = {
                 [action.question.author] : {
@@ -26,8 +26,16 @@ export default function questions (state = {}, action) {
                 ///...userUpdate,
             }
         case ANSWER_QUESTION:
+            console.log(action)
             return {
                 ...state,
+                [action.id] : {
+                    ...state[action.id],
+                    [action.selectedOption] : {
+                        ...state[action.selectedOption],
+                        votes : state[action.selectedOption].votes.concat([action.authUser.id])
+                    }
+                }
             }
         default : return state
     }

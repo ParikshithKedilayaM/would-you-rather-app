@@ -46,6 +46,7 @@ class NewQuestion extends Component {
             <div>
                 <Header />
                 <div className="panel panel-default col-md-6 col-md-offset-3">
+                    <div className="panel-heading text-center"><h2>Create New Question</h2></div>
                     {this.state.success && (
                         <div className="alert alert-success flex">
                             <label>Question posted successfully</label>
@@ -56,7 +57,6 @@ class NewQuestion extends Component {
                             <label>Please fill both the options to submit a poll!</label>
                         </div>
                     )}
-                    <div className="panel-heading text-center"><h2>Create New Question</h2></div>
                     <div className="panel-body">
                         <div>
                             <label className="">Complete the question.</label>

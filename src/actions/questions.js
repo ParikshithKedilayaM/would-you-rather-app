@@ -38,6 +38,11 @@ export function handleAddPoll(optionOne, optionTwo) {
         })
         .then((question) => dispatch(addQuestion(question)))
         .then(() => dispatch(hideLoading()))
+        .catch((e) => {
+            console.warn(e)
+            alert('Error adding question!')
+            dispatch(hideLoading())
+        })
     }
 }
 
@@ -50,7 +55,12 @@ export function handleAnswerQuestion(id, selectedOption) {
             qid : id, 
             answer : selectedOption,
         })
-        .then((info) => dispatch(answerQuestion(info)))
+        .then(() => dispatch(answerQuestion({id, selectedOption, authUser})))
         .then(() => dispatch(hideLoading()))
+        .catch((e) => {
+            console.warn(e)
+            alert('Error answering question!')
+            dispatch(hideLoading())
+        })
     }
 }
