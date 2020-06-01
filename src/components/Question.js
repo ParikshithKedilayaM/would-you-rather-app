@@ -21,8 +21,8 @@ class Question extends Component {
     getSelectedOption () {
         return (this.state.optionOne || this.state.optionTwo) 
         ? (this.state.optionOne === true 
-            ? "optionOne" 
-            : "optionTwo")
+            ? 'optionOne' 
+            : 'optionTwo')
         : null
     }
     

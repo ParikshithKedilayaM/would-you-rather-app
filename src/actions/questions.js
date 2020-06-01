@@ -1,5 +1,6 @@
 import { addPoll, recordResponse } from '../utils/api'
 import { showLoading, hideLoading } from 'react-redux-loading'
+import { addUserQuestion, addUserResponse } from './users'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const ADD_QUESTION = 'ADD_QUESTION'
@@ -37,6 +38,7 @@ export function handleAddPoll(optionOne, optionTwo) {
             author: authUser.id,
         })
         .then((question) => dispatch(addQuestion(question)))
+        .then((question) => dispatch(addUserQuestion(question)))
         .then(() => dispatch(hideLoading()))
         .catch((e) => {
             console.warn(e)
@@ -56,6 +58,7 @@ export function handleAnswerQuestion(id, selectedOption) {
             answer : selectedOption,
         })
         .then(() => dispatch(answerQuestion({id, selectedOption, authUser})))
+        .then(() => dispatch(addUserResponse({id, selectedOption, authUser})))
         .then(() => dispatch(hideLoading()))
         .catch((e) => {
             console.warn(e)

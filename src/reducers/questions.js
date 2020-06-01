@@ -11,31 +11,21 @@ export default function questions (state = {}, action) {
                 ...state, ...action.questions
             }
         case ADD_QUESTION :
-            console.log(action.question.author)
-            let userUpdate = {}
-            userUpdate = {
-                [action.question.author] : {
-                    ...state[action.question.author],
-                    //questions : state[action.question.author].questions.concat([action.question.id])
-                }
-            }
-            console.log(userUpdate)
             return {
                 ...state, 
                 [action.question.id] : action.question,
-                ///...userUpdate,
             }
         case ANSWER_QUESTION:
-            console.log(action)
+            const {id, selectedOption, authUser} = action.info
             return {
                 ...state,
-                [action.id] : {
-                    ...state[action.id],
-                    [action.selectedOption] : {
-                        ...state[action.selectedOption],
-                        votes : state[action.selectedOption].votes.concat([action.authUser.id])
+                [id] : {
+                    ...state[id],
+                    [selectedOption] : {
+                        ...state[id][selectedOption],
+                        votes : state[id][selectedOption].votes.concat([authUser.id])
                     }
-                }
+                },
             }
         default : return state
     }

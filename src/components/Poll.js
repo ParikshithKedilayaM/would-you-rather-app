@@ -8,8 +8,8 @@ class Poll extends Component {
         answered : false,
     }
     componentDidMount =() => {
-        const {authUser, id} = this.props
-        if (Object.keys(authUser.answers).includes(id)) {
+        const {authUser, id, users} = this.props
+        if (Object.keys(users[authUser.id].answers).includes(id)) {
             this.setState({
                 answered : true,
             })
