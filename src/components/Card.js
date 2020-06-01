@@ -6,6 +6,23 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 class Card extends Component {
+state = {
+    route: 0,
+}
+componentDidMount = () => {
+    let option = 0;
+    if (this.props.thumbnail === true) {
+        option = 1;
+    } else if (this.props.q === true){
+        option = 2;
+    } else if (this.props.result === true){
+        option = 3;
+    }
+    this.setState({
+        route: option, 
+    })
+}
+
     render() {
         if ( this.props.question === undefined) {
             return <Redirect to = "/404" />
@@ -24,9 +41,9 @@ class Card extends Component {
                         <img className="img-circle" width="100%" src={questionUser.avatarURL} alt="User avatar" />
                     </div>
                     <div className="col-md-9 left" >
-                        {this.props.thumbnail && (<QuestionThumbnail id={this.props.id} />)}
-                        {this.props.q && (<Question id={this.props.id} />)}
-                        {this.props.result && (<Result id={this.props.id} />)}
+                        {this.state.route===1 && (<QuestionThumbnail id={this.props.id} />)}
+                        {this.state.route===2 && (<Question id={this.props.id} />)}
+                        {this.state.route===3 && (<Result id={this.props.id} />)}
                     </div>
                 </div>
                 

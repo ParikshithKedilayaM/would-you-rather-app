@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { handleAnswerQuestion } from '../actions/questions'
+import { Redirect } from 'react-router-dom'
 
 class Question extends Component {
     state = {
         optionOne : false,
         optionTwo : false,
+        isSet : false,
     }
 
     answerQuestion = (event) => {
@@ -14,6 +16,11 @@ class Question extends Component {
         if (selectedOption !== null) { 
             const {dispatch} = this.props
             dispatch(handleAnswerQuestion(this.props.id, selectedOption))
+            .then(() => (
+                this.setState({
+                    isSet: true,
+                })
+            ))
         }
 
     }
@@ -41,6 +48,9 @@ class Question extends Component {
     }
 
     render() {
+        if (this.state.isSet) {
+            return <Redirect to={`/`} />
+        }
         return (
             <div className="card-body">
                 <h2 className="card-title">Would You Rather...</h2>

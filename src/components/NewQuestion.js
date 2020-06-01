@@ -20,12 +20,14 @@ class NewQuestion extends Component {
         } else {
             const {dispatch} = this.props
             dispatch(handleAddPoll(this.state.optionOne, this.state.optionTwo))
-            this.setState({
-                optionOne:'',
-                optionTwo:'',
-                success: true,
-                errorField: false,
-            })
+            .then(() => {
+                this.setState({
+                    optionOne:'',
+                    optionTwo:'',
+                    success: true,
+                    errorField: false,
+                })}
+            )
         }
     }
 
