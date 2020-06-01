@@ -11,8 +11,14 @@ export default function users (state = {}, action) {
                 ...state, ...action.users
             }
         case ADD_USER_QUESTION:
+            const{question} = action.question
+            console.log(question)
             return {
                 ...state,
+                [question.author]: {
+                    ...state[question.author],
+                    questions: state[question.author].questions.concat([question.id])
+                }
             }
         case ADD_USER_RESPONSE:
             const {id, selectedOption, authUser} = action.info

@@ -5,8 +5,8 @@ class Result extends Component {
     render() {
         const {optionOne, optionTwo, userSelection} = this.props
         const total = optionOne.votes.length + optionTwo.votes.length
-        const optionOnePercentage = (optionOne.votes.length / total) * 100
-        const optionTwoPercentage = (optionTwo.votes.length / total) * 100
+        const optionOnePercentage = ((optionOne.votes.length / total) * 100).toFixed(2)
+        const optionTwoPercentage = ((optionTwo.votes.length / total) * 100).toFixed(2)
 
         return (
             <div className="card-body">
@@ -48,10 +48,10 @@ class Result extends Component {
     }
 }
 
-function mapStateToProps({questions, authUser},props) {
+function mapStateToProps({questions, authUser, users},props) {
     const {id} = props
     return {
-        userSelection: authUser.answers[id],
+        userSelection: users[authUser.id].answers[id],
         optionOne : questions[id].optionOne,
         optionTwo : questions[id].optionTwo,
     }
